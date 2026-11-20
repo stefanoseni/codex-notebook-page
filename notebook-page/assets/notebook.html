@@ -1,0 +1,131 @@
+<style>
+  #notebook-page-demo {
+    --rule-height: calc(var(--font-size-base, 16px) * 2);
+    --margin-width: clamp(1.7rem, 7vw, 3rem);
+    --rule-color: color-mix(in srgb, var(--blue, #5689af) 29%, transparent);
+    --margin-color: color-mix(in srgb, var(--red, #b5444d) 43%, transparent);
+    position: relative;
+    box-sizing: border-box;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: calc(var(--rule-height) / 2) 1rem var(--rule-height)
+      calc(var(--margin-width) + .8rem);
+    color: var(--card-foreground, #232e42);
+    background: var(--card, #fffdf7);
+    border: 1px solid var(--border, #dedace);
+    border-radius: .6rem;
+    overflow-wrap: anywhere;
+    font: inherit;
+  }
+
+  #notebook-page-demo::before {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: var(--margin-width);
+    border-inline-start: 1px solid var(--margin-color);
+    content: "";
+  }
+
+  #notebook-page-demo > h2,
+  #notebook-page-demo > p,
+  #notebook-page-demo > .block {
+    margin: 0;
+    min-block-size: var(--rule-height);
+    line-height: var(--rule-height);
+    background: repeating-linear-gradient(
+      to bottom, transparent 0 calc(var(--rule-height) - 1px),
+      var(--rule-color) calc(var(--rule-height) - 1px) var(--rule-height)
+    );
+  }
+
+  #notebook-page-demo > h2 {
+    font-weight: 500;
+  }
+
+  #notebook-page-demo > .block {
+    box-sizing: border-box;
+    padding-block: .25rem;
+    background: none;
+    border-block-end: 1px solid var(--rule-color);
+    break-inside: avoid;
+  }
+
+  #notebook-page-demo math {
+    vertical-align: middle;
+  }
+
+  #notebook-page-demo .triangle {
+    position: relative;
+    width: 11.25rem;
+    max-width: 100%;
+    height: 6.5rem;
+    margin-block: .45rem;
+  }
+
+  #notebook-page-demo .edges {
+    position: absolute;
+    inset: .5rem 2.2rem 1.5rem 3.05rem;
+    border-inline-start: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+  }
+
+  #notebook-page-demo .edges::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top right,
+      transparent 49.2%, currentColor 49.3% 50.7%, transparent 50.8%);
+    content: "";
+  }
+
+  #notebook-page-demo .edges::after {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    width: .75rem;
+    height: .75rem;
+    border-block-start: 1px solid currentColor;
+    border-inline-end: 1px solid currentColor;
+    content: "";
+  }
+
+  #notebook-page-demo .side {
+    position: absolute;
+    line-height: normal;
+  }
+
+  #notebook-page-demo .height { left: 0; white-space: nowrap; top: 1.8rem; }
+  #notebook-page-demo .base { left: 5.1rem; bottom: 0; }
+  #notebook-page-demo .slope { left: 6.3rem; top: .8rem; }
+
+  @media print {
+    #notebook-page-demo {
+      --card: white;
+      --card-foreground: black;
+      --blue: #777;
+      --red: #777;
+      max-width: none;
+      border: 0;
+      border-radius: 0;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+</style>
+
+<article id="notebook-page-demo" aria-labelledby="notebook-page-demo-title">
+  <h2 id="notebook-page-demo-title">Area of a right triangle</h2>
+  <p>Use the two sides that meet at the right angle.</p>
+  <p></p>
+  <figure class="block" aria-label="Right triangle with height 3 cm, base 4 cm, and slanted side 5 cm">
+    <div class="triangle" aria-hidden="true">
+      <div class="edges"></div>
+      <span class="side height">3 cm</span>
+      <span class="side base">4 cm</span>
+      <span class="side slope">5 cm</span>
+    </div>
+  </figure>
+  <p></p>
+  <div class="block"><math><mi>A</mi><mo>=</mo><mfrac><mrow><mi>b</mi><mo>×</mo><mi>h</mi></mrow><mn>2</mn></mfrac></math></div>
+  <div class="block"><math><mi>A</mi><mo>=</mo><mfrac><mrow><mn>4</mn><mo>×</mo><mn>3</mn></mrow><mn>2</mn></mfrac></math></div>
+  <p><math><mi>A</mi><mo>=</mo><mn>6</mn><mspace width=".3em"></mspace><msup><mtext>cm</mtext><mn>2</mn></msup></math></p>
+</article>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notebook Page"
+  short_description: "Format notes, math, and sketches for handwriting"
+  default_prompt: "Use $notebook-page to put these notes on a page I can copy by hand."
